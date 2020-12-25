@@ -1,0 +1,702 @@
+"use strict";
+function updatePositionsAndSizes() {
+    var e = $("#nextmove .board-b72b1")
+      , t = $("#puzzles .board-b72b1")
+      , o = $("#nextmove").length
+      , n = $("#puzzles").length;
+    $(document).width() < 768 ? ($(".score1").css("top", ""),
+    $(".score2").css("top", ""),
+    $(".score-progress").css("top", ""),
+    $(".score-progress").css("height", ""),
+    $(".controls2").css("top", ""),
+    $("controls").css("top", ""),
+    o && ($("#nextmove .socials").css("top", $("#nextmove .banner-row").offset().top + $("#nextmove .banner-row").outerHeight() - $("header").outerHeight() + 10 + "px"),
+    $("#nextmove .socials").css("left", ($(document).width() - $("#nextmove .socials").width()) / 2 + "px")),
+    n && $("#puzzles .socials").css("top", "")) : $(document).width() < 1170 ? (e.length && ($(".score1").css("top", e.position().top + "px"),
+    $(".score2").length && $(".score2").css("top", e.position().top + e.height() - $(".score2").height() + "px"),
+    $(".score-progress").css("top", e.position().top + 40 + "px"),
+    $(".score-progress").css("height", e.height() - 80 + "px"),
+    $("#nextmove .controls2").css("top", e.position().top + "px")),
+    t.length && $("#puzzles .controls2").css("top", t.position().top + "px"),
+    $(".controls").css("top", ""),
+    $(".banner-row").css("top", ""),
+    o && ($("#nextmove .socials").css("top", ""),
+    $("#nextmove .socials").css("left", "")),
+    n && $("#puzzles .socials").css("top", "")) : (o && ($(".info").css("top", $("#nextmove .description").height() + 16 + "px"),
+    $("#nextmove .controls2").css("top", $("#nextmove .info").position().top + $("#nextmove .info").height() + 16 + "px"),
+    $("#nextmove .controls").css("top", $("#nextmove .controls2").position().top + $("#nextmove .controls2").height() + 16 + "px"),
+    $("#nextmove .banner-row").css("top", $("#nextmove .controls").offset().top + $("#nextmove .controls").height() - $("header").outerHeight() + 16 + "px"),
+    $("#nextmove .socials").css("top", ""),
+    $("#nextmove .socials").css("left", "")),
+    n && ($("#puzzles .controls2").css("top", $("#puzzles .top-block").position().top + $("#puzzles .top-block").height() + 16 + "px"),
+    $("#puzzles .banner-row").css("top", $("#puzzles .controls2").offset().top + $("#puzzles .controls2").height() - $("header").outerHeight() + 16 + "px"),
+    $("#puzzles .rating-block").css("top", $("#puzzles .banner-row").offset().top + $("#puzzles .banner-row").height() - $("header").outerHeight() + 36 + "px"),
+    $("#puzzles .socials").css("top", $("#puzzles .description").offset().top + $("#puzzles .description").height() - $("header").outerHeight() + 10 + "px"))),
+    $(document).width() >= 768 && e.length && ($(".score1").css("top", e.position().top + "px"),
+    $(".score2").length && $(".score2").css("top", e.position().top + e.height() - $(".score2").height() + "px"),
+    $(".score-progress").css("top", e.position().top + 40 + "px"),
+    $(".score-progress").css("height", e.height() - 80 + "px"))
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+function _classCallCheck(e, t) {
+    if (!(e instanceof t))
+        throw new TypeError("Cannot call a class as a function")
+}
+$(function() {});
+var _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , BoardController = function() {
+    function e(t) {
+        _classCallCheck(this, e),
+        this.board = t,
+        t.boardHighlight = {
+            highlighted: [],
+            highlight: function() {
+                this._highlight("highlightSqr", arguments)
+            },
+            highlightDark: function() {
+                this._highlight("highlightSqrDark", arguments)
+            },
+            highlightGreen: function() {
+                this._highlight("highlightSqrGreen", arguments)
+            },
+            removeHighlight: function() {
+                for (; this.highlighted.length; ) {
+                    var e = this.highlighted.pop()
+                      , o = $("#" + t.boardId + " .square-" + e);
+                    o.removeClass("highlightSqr").removeClass("highlightSqrDark").removeClass("highlightSqrGreen")
+                }
+            },
+            _highlight: function(e, o) {
+                for (var n = 0; n < o.length; n++) {
+                    this.highlighted.push(o[n]);
+                    var i = $("#" + t.boardId + " .square-" + o[n]);
+                    i.addClass(e)
+                }
+            }
+        }
+    }
+    return _createClass(e, [{
+        key: "updateBoardState",
+        value: function(e) {
+            console.log(e.isBoardLocked),
+            this.board.model.viewModel.boardState(e),
+            e.suggestedMove && (this.board.boardHighlight.removeHighlight(),
+            this.board.boardHighlight.highlight(e.suggestedMove.from, e.suggestedMove.to)),
+            e.bestMove && (this.board.boardHighlight.removeHighlight(),
+            this.board.boardHighlight.highlightDark(e.bestMove.from, e.bestMove.to)),
+            e.bestMove || e.suggestedMove || this.board.boardHighlight.removeHighlight(),
+            e.puzzle.help.from && (e.puzzle.help.from && (this.board.boardHighlight.removeHighlight(),
+            this.board.boardHighlight.highlightGreen(e.puzzle.help.from)),
+            e.puzzle.help.to && this.board.boardHighlight.highlightGreen(e.puzzle.help.to)),
+            e.isSkipBoardUpdate || this.board.fen() === e.fen || this.board.position(e.fen)
+        }
+    }]),
+    e
+}()
+  , _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , EngineController = function() {
+    function e(t) {
+        _classCallCheck(this, e),
+        this.dispatcher = t,
+        this.engineActions = new EngineActions(t),
+        this.engine = null;
+        var o = $.get("js/min/chessworker.min.js");
+        this.workerBlob = new Blob(o,{
+            type: "text/javascript"
+        })
+    }
+    return _createClass(e, [{
+        key: "startSearch",
+        value: function(e, t, o) {
+            this.engine = new Worker(window.URL.createObjectURL(this.workerBlob))
+        }
+    }, {
+        key: "stopSearch",
+        value: function() {}
+    }]),
+    e
+}()
+  , _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , EngineGarbochessController = function() {
+    function e(t) {
+        _classCallCheck(this, e);
+        var o = this
+          , n = "gchess";
+        if (this.gBackgroundEngineValid = !0,
+        this.gBackgroundEngine = null,
+        this.chessWorkerPath = t,
+        "undefined" != typeof Storage) {
+            var i = localStorage.getItem(n);
+            i ? o.workerBlob = new Blob([i],{
+                type: "text/javascript"
+            }) : $.get(t, function(e) {
+                localStorage.setItem(n, e),
+                o.workerBlob = new Blob([e],{
+                    type: "text/javascript"
+                })
+            })
+        } else
+            $.get(t, function(e) {
+                o.workerBlob = new Blob([e],{
+                    type: "text/javascript"
+                })
+            })
+    }
+    return _createClass(e, [{
+        key: "startSearch",
+        value: function(e, t, o, n) {
+            this.localInitializeBackgroundEngine(t) && (this.gBackgroundEngine.postMessage("position " + e),
+            this.gBackgroundEngine.postMessage("analyze"));
+            var i = this;
+            setTimeout(function() {
+                i.localEnsureAnalysisStopped(),
+                o()
+            }, n)
+        }
+    }, {
+        key: "stopSearch",
+        value: function() {
+            this.localEnsureAnalysisStopped()
+        }
+    }, {
+        key: "localInitializeBackgroundEngine",
+        value: function(e) {
+            if (!this.gBackgroundEngineValid)
+                return !1;
+            if (null == this.gBackgroundEngine) {
+                this.gBackgroundEngineValid = !0;
+                try {
+                    this.gBackgroundEngine = new Worker(window.URL.createObjectURL(this.workerBlob));
+                    var t = this;
+                    this.gBackgroundEngine.onmessage = function(o) {
+                        "pv" == o.data.match("^pv") ? e(t.localParsePlyStr(o.data)) : "message" == o.data.match("^message") && t.localEnsureAnalysisStopped()
+                    }
+                    ,
+                    this.gBackgroundEngine.error = function(e) {
+                        alert("Error from background worker:" + e.message)
+                    }
+                } catch (e) {
+                    this.gBackgroundEngineValid = !1
+                }
+            }
+            return this.gBackgroundEngineValid
+        }
+    }, {
+        key: "localParsePlyStr",
+        value: function(e) {
+            var t = /Score:[-+]*\d+/.exec(e)
+              , o = 0;
+            t.length && (o = +t[0].replace("Score:", ""));
+            var n = /NPS:\d+/.exec(e)
+              , i = "";
+            if (n.length) {
+                var a = e.lastIndexOf(n[0]) + n[0].length;
+                i = e.substring(a).trim()
+            }
+            return {
+                score: o,
+                moves: i.split(" ")
+            }
+        }
+    }, {
+        key: "localEnsureAnalysisStopped",
+        value: function() {
+            null != this.gBackgroundEngine && (this.gBackgroundEngine.terminate(),
+            this.gBackgroundEngine = null)
+        }
+    }]),
+    e
+}()
+  , _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , BoardState = function() {
+    function e() {
+        _classCallCheck(this, e)
+    }
+    return _createClass(e, null, [{
+        key: "getBoardState",
+        value: function(e) {
+            return {
+                fen: e,
+                previousFenStack: [],
+                isChessEngineActive: !1,
+                isAnalysing: !1,
+                bestMove: null,
+                suggestedMove: null,
+                isSkipBoardUpdate: !1,
+                isBoardLocked: !1,
+                isBoardSideWhite: !0,
+                isPuzzleMode: !1,
+                puzzle: {
+                    isIncorrectMove: !1,
+                    isPuzzleMoveInProgress: !1,
+                    isSolved: !1,
+                    isBackButtonPressed: !1,
+                    help: {
+                        from: null,
+                        to: null
+                    },
+                    resetHelp: function() {
+                        this.help = {
+                            from: null,
+                            to: null
+                        }
+                    }
+                },
+                game: {
+                    isPositionLeagal: function() {
+                        function e(e, t) {
+                            var o = 0;
+                            for (var n in e)
+                                e[n] === t && o++;
+                            return o
+                        }
+                        var t = ChessBoard.fenToObj(this.Parrent.fen);
+                        if (1 !== e(t, "bK") || 1 !== e(t, "wK"))
+                            return !1;
+                        var o = new Chess;
+                        try {
+                            var n = o.validate_fen(this.Parrent.getGameFen());
+                            if (!n.valid)
+                                return !1;
+                            if (o.load(this.Parrent.getGameFen()),
+                            o.game_over())
+                                return !1;
+                            if (o.load(this.Parrent.getGameFenForAnotherSide()),
+                            o.in_check())
+                                return !1
+                        } catch (e) {
+                            return !1
+                        }
+                        return !0
+                    },
+                    isGameOver: function() {
+                        var e = new Chess(this.Parrent.getGameFen());
+                        return e.in_checkmate()
+                    },
+                    isStalemate: function() {
+                        var e = new Chess(this.Parrent.getGameFen());
+                        return e.in_stalemate()
+                    },
+                    score: 0,
+                    turnSide: "w",
+                    changeTurnSide: function() {
+                        this.turnSide = "w" === this.turnSide ? "b" : "w"
+                    }
+                },
+                moveCleanup: function() {
+                    this.puzzle.resetHelp(),
+                    this.bestMove = null,
+                    this.suggestedMove = null
+                },
+                getGameFen: function() {
+                    return this.fen + " " + this.game.turnSide + " - - 0 1"
+                },
+                getGameFenForAnotherSide: function() {
+                    return this.fen + " " + ("w" === this.game.turnSide ? "b" : "w") + " - - 0 1"
+                },
+                setFen: function(e, t, o) {
+                    e !== this.fen && (o || this.previousFenStack.push(this.fen),
+                    this.isAnalysing && this.game.changeTurnSide()),
+                    this.isSkipBoardUpdate = t,
+                    this.fen = e
+                },
+                getPreviousFen: function() {
+                    var e = this
+                      , t = this.previousFenStack.findIndex(function(t) {
+                        return t == e.fen
+                    });
+                    return t < 0 && (t = this.previousFenStack.length - 1),
+                    this.previousFenStack[t]
+                },
+                getBarPercent: function() {
+                    var e = 50;
+                    return e -= this.game.score / 13 / 20,
+                    e = e > 95 ? 95 : e,
+                    e = e < 5 ? 5 : e,
+                    e + "%"
+                },
+                Init: function() {
+                    return this.game.Parrent = this,
+                    delete this.Init,
+                    this
+                }
+            }.Init()
+        }
+    }]),
+    e
+}()
+  , _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , Task = function() {
+    function e(t) {
+        _classCallCheck(this, e),
+        this.fen = t.fen,
+        this.steps = JSON.parse(t.solveSteps),
+        this.color = "WHITE" == t.color || "w" == t.color ? "w" : "b"
+    }
+    return _createClass(e, [{
+        key: "getStepFen",
+        value: function(e) {
+            for (var t = new Chess(this.getTaskFen()), o = 0; o <= e; o++) {
+                var n = {
+                    from: this.steps[o].slice(0, 2),
+                    to: this.steps[o].slice(2, 4)
+                }
+                  , i = t.move(n);
+                if (null == i)
+                    throw "Incorrect move"
+            }
+            return t.fen()
+        }
+    }, {
+        key: "getTaskFen",
+        value: function() {
+            return this.fen.split(" ")[0] + " " + this.color + " - - 0 1"
+        }
+    }]),
+    e
+}();
+!function(e) {
+    function t(e) {
+        e.model = {
+            viewModel: {
+                boardState: ko.observable(null),
+                startAnalyse: function() {
+                    var t = this.boardState().getGameFen();
+                    e.actions.startSearch(t)
+                },
+                stopAnalyse: function() {
+                    e.actions.cancelSearch()
+                },
+                move: function() {
+                    e.actions.move()
+                },
+                setTurn: function(t) {
+                    e.actions.setTurn(t)
+                },
+                setPosition: function(t) {
+                    e.actions.positionChanged(t)
+                },
+                undoMove: function() {
+                    e.actions.undoMove()
+                },
+                flipBoard: function() {
+                    e.actions.flipBoard()
+                }
+            }
+        },
+        e.model.viewModel.boardState.subscribe(function(t) {
+            null != t && (t.isBoardSideWhite ? e.orientation("white") : e.orientation("black"))
+        }),
+        e.actions = new BoardActions(e),
+        e.actions.initializeBoard()
+    }
+    e.utils = e.utils || (e.utils = {}),
+    e.utils.extendChessBoard = t
+}(window.cnm || (window.cnm = {}));
+var _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , BoardActions = function() {
+    function e(t) {
+        _classCallCheck(this, e),
+        this.board = t,
+        this.dispatcher = new BoardDispatcher(t),
+        this.engineController = new EngineGarbochessController("/js/min/chessworker.min.js")
+    }
+    return _createClass(e, [{
+        key: "initializeBoard",
+        value: function() {
+            this.dispatcher.initializeBoard()
+        }
+    }, {
+        key: "startSearch",
+        value: function(e) {
+            this.board.model.viewModel.boardState().game.isPositionLeagal() && (ga("send", "event", "analyze", "start"),
+            this.dispatcher.startSearch(),
+            this.engineController.startSearch(e, this.midResultCallback(), this.searchFinishedCallback(), 2e3))
+        }
+    }, {
+        key: "cancelSearch",
+        value: function() {
+            this.engineController.stopSearch(),
+            this.dispatcher.cancelSearch()
+        }
+    }, {
+        key: "midResultCallback",
+        value: function() {
+            var e = this;
+            return function(t) {
+                e.dispatcher.middleSearchResult(t)
+            }
+        }
+    }, {
+        key: "searchFinishedCallback",
+        value: function() {
+            var e = this;
+            return function() {
+                e.dispatcher.searchFinished()
+            }
+        }
+    }, {
+        key: "positionChanged",
+        value: function(e) {
+            this.dispatcher.positionChanged(e)
+        }
+    }, {
+        key: "setTurn",
+        value: function(e) {
+            this.dispatcher.setTurn(e),
+            this.board.model.viewModel.boardState().isAnalysing && this.startSearch(this.board.model.viewModel.boardState().getGameFen())
+        }
+    }, {
+        key: "move",
+        value: function(e, t) {
+            if (e || this.board.model.viewModel.boardState().bestMove) {
+                var o;
+                if (!e && this.board.model.viewModel.boardState().bestMove) {
+                    var n = new Chess(this.board.model.viewModel.boardState().getGameFen());
+                    n.move({
+                        from: this.board.model.viewModel.boardState().bestMove.from,
+                        to: this.board.model.viewModel.boardState().bestMove.to
+                    }),
+                    o = n.fen().split(" ")[0]
+                } else
+                    o = ChessBoard.objToFen(e);
+                this.engineController.stopSearch(),
+                this.dispatcher.positionChanged(o, t),
+                this.board.model.viewModel.boardState().isAnalysing && this.startSearch(this.board.model.viewModel.boardState().getGameFen())
+            }
+        }
+    }, {
+        key: "undoMove",
+        value: function() {
+            null != this.board.model.viewModel.boardState().previousFenStack && 0 != this.board.model.viewModel.boardState().previousFenStack.length && this.dispatcher.undoMove()
+        }
+    }, {
+        key: "onBoardDragStart",
+        value: function(e, t, o, n) {
+            return this.dispatcher.onBoardDragStart(e, t, o, n)
+        }
+    }, {
+        key: "flipBoard",
+        value: function() {
+            this.dispatcher.flipBoard()
+        }
+    }]),
+    e
+}()
+  , _createClass = function() {
+    function e(e, t) {
+        for (var o = 0; o < t.length; o++) {
+            var n = t[o];
+            n.enumerable = n.enumerable || !1,
+            n.configurable = !0,
+            "value"in n && (n.writable = !0),
+            Object.defineProperty(e, n.key, n)
+        }
+    }
+    return function(t, o, n) {
+        return o && e(t.prototype, o),
+        n && e(t, n),
+        t
+    }
+}()
+  , BoardDispatcher = function() {
+    function e(t) {
+        _classCallCheck(this, e),
+        this.boardController = new BoardController(t),
+        this.boardState = BoardState.getBoardState(t.fen())
+    }
+    return _createClass(e, [{
+        key: "initializeBoard",
+        value: function() {
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "middleSearchResult",
+        value: function(e) {
+            if (e && e.moves && e.moves.length) {
+                var t = new Chess(this.boardState.getGameFen())
+                  , o = t.move(e.moves[0]);
+                if (null != o && (this.boardState.suggestedMove = o),
+                this.boardState.isAnalysing) {
+                    var n = "b" === this.boardState.game.turnSide ? -e.score : e.score;
+                    this.boardState.game.score = n
+                }
+            }
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "searchFinished",
+        value: function() {
+            this.boardState.isAnalysing = !0,
+            this.boardState.isChessEngineActive = !1,
+            this.boardState.bestMove = this.boardState.suggestedMove,
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "startSearch",
+        value: function() {
+            this.boardState.isChessEngineActive = !0,
+            this.boardState.isAnalysing = !0,
+            this.boardState.moveCleanup(),
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "cancelSearch",
+        value: function() {
+            this.boardState.isAnalysing = !1,
+            this.boardState.isChessEngineActive = !1,
+            this.boardState.moveCleanup(),
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "positionChanged",
+        value: function(e, t) {
+            this.boardState.setFen(e, !!t),
+            this.boardState.moveCleanup(),
+            this.boardState.game.isPositionLeagal() || (this.boardState.isAnalysing = !1,
+            this.isChessEngineActive = !1),
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "setTurn",
+        value: function(e) {
+            this.boardState.game.turnSide = e,
+            this.boardState.isChessEngineActive = !1,
+            this.boardState.moveCleanup(),
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }, {
+        key: "undoMove",
+        value: function() {
+            var e = this.boardState.previousFenStack.pop();
+            this.boardState.setFen(e, !1, !0),
+            this.boardState.game.changeTurnSide(),
+            this.cancelSearch()
+        }
+    }, {
+        key: "onBoardDragStart",
+        value: function(e, t, o, n) {
+            return !this.boardState || !this.boardState.isBoardLocked
+        }
+    }, {
+        key: "flipBoard",
+        value: function() {
+            this.boardState.isBoardSideWhite = !this.boardState.isBoardSideWhite,
+            this.boardController.updateBoardState(this.boardState)
+        }
+    }]),
+    e
+}();

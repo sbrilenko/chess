@@ -1,0 +1,967 @@
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0eff5;
+    min-width: 320px;
+    color: #282828;
+}
+
+a:link,
+a:visited {
+    color: #217192;
+    text-decoration: none;
+}
+a:hover,
+a:active {
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    font-size: 18px;
+    margin: 15px 0 5px;
+}
+
+.main-wrapper {
+    max-width: 1170px;
+    margin: auto;
+    position: relative;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #d9d9de;
+    line-height: 41px;
+}
+    header .logo
+    {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 14px;
+        font-style: italic;
+    }
+    header .auth-block i {
+        font-size: 24px;
+        line-height: 40px;
+        vertical-align: top;
+    }
+        header .dropdown-menu {
+            font-size: 12px;
+            min-width: 80px;
+        }
+        header a:link {
+            text-decoration: none;
+        }
+
+.black-3c85d.highlightSqrDark {
+    -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    background: #837f75;
+}
+.white-1e1d7.highlightSqrDark {
+    -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    background: #a2b0a6;
+}
+.highlightSqr {
+    -webkit-box-shadow: inset 0 0 4px 4px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0 0 4px 4px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 4px 4px rgba(0,0,0,0.4);
+    background: #deece2;
+}
+.black-3c85d.highlightSqrGreen {
+    -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    background: #56b070;
+}
+.white-1e1d7.highlightSqrGreen {
+    -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.4);
+    background: #56b070;
+}
+
+.no-padding
+{
+    padding: 0;
+}
+
+.nav {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+    .nav li {
+        width: 50%;
+        float: left;
+        display: block;
+    }
+        .nav li.active a {
+            border-bottom: 2px solid #38363e;
+        }
+        .nav li a:link,
+        .nav li a:visited {
+            color: #282828;
+            text-decoration: none;
+            background: none;
+        }
+        .nav li a:hover,
+        .nav li a:focus,
+        .nav li a:active{
+            color: #282828;
+            text-decoration: none;
+            background: none;
+        }
+        .nav li a {
+            display: block;
+            line-height: 41px;
+            padding: 0 12px;
+            border-bottom: 2px solid #fff;
+        }
+
+.tab-content
+{
+    overflow: hidden;
+}
+
+.chess-wrapper {
+    padding: 0 15px;
+    position: relative;
+}
+.chess-wrapper2 {
+    padding: 0 15px;
+    position: relative;
+}
+
+.scores {
+    width: 25%;
+    float: right;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+    .grayout {
+        opacity: 0.1;
+    }
+    .score1
+    {
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+        background: #282828;
+        margin-top: 17px;
+        margin-left: 10px;
+    }
+
+    .scorewhite {
+        color: #282828; !important;
+        background: #ffffff; !important;
+        border: 1px solid #d9d9de; !important;
+    }
+
+    .score2
+    {
+        display: none;
+        color: #282828;
+        background: #ffffff;
+        border: 1px solid #d9d9de;
+    }
+.score-progress
+{
+    display: block;
+    margin-top: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #fff;
+    height: 4px;
+    clear: both;
+    position: relative;
+}
+    .progress
+    {
+        margin-top: -1px;
+        border: 1px solid #38363e;
+        height: 4px;
+        border-radius: 2px;
+        background: #282828;
+        min-width: 4px;
+        min-height: 4px;
+    }
+    .progress:after
+    {
+        content: '';
+        position: absolute;
+        border-right: 1px solid #e65757;
+        width: 50%;
+        height: 8px;
+        margin-top: -3px;
+    }
+
+.controls a:link,
+.controls2 a:link,
+.pieces a:link {
+    text-decoration: none;
+}
+
+.controls {
+    width: 75%;
+    float: left;
+    margin-top: 17px;
+    height: 44px;
+    line-height: 44px;
+    background: #e0e0e0;
+    border: 1px solid #d9d9de;
+}
+    .controls .ctrl-btn {
+        float: left;
+        padding: 10px 0px 0 0px;
+        font-size: 10px;
+        text-align: center;
+    }
+    .controls .ctrl-btn.current,
+    .controls .ctrl-btn:hover:not(.inactive) {
+        background-color: #cdcdcd;
+    }
+    .controls a:link,
+    .controls a:visited {
+        color: #282828;
+        text-decoration: none;
+    }
+    .controls .icon-reset {
+        width: 30%;
+        background: url(../img/icon-reset.png) no-repeat center 8px;
+    }
+    .controls .icon-king {
+        width: 35%;
+        background: url(../img/icon-king.png) no-repeat center 6px;
+    }
+    .controls .icon-rotate {
+        width: 35%;
+        background: url(../img/icon-rotate.png) no-repeat center 6px;
+    }
+.controls2 {
+    background: #e0e0e0;
+    border: 1px solid #d9d9de;
+    height: 42px;
+    line-height: 42px;
+    font-size: 12px;
+    text-align: center;
+    padding: 0 15px;
+}
+    .controls2 .ctrl-btn {
+        color: #38363e;
+        float: left;
+        display: block;
+        width: 42px;
+        height: 42px;
+        overflow: hidden;
+    }
+    .controls2 .ctrl-btn.current,
+    .controls2 .ctrl-btn:hover:not(.inactive) {
+        background: #cdcdcd;
+    }
+        .controls2 .ctrl-btn i {
+            font-size: 42px;
+            line-height: 42px;
+            display: block !important;
+            top: 0;
+        }
+        .controls2 .ctrl-btn i.icon {
+            width: 42px;
+            height: 42px;
+            display: inline-block;
+            background: url(../img/controls2.png) no-repeat;
+        }
+    .controls2 .ctrl-btn.inactive {
+        color: #cdcdcd;
+    }
+
+    .controls2 .ctrl-btn i.icon-play {
+        background-position: center -0px;
+    }
+    .controls2 .ctrl-btn i.icon-stop {
+        background-position: center -42px;
+    }
+
+    .controls2 .ctrl-btn i.icon-black {
+        background-position: center -84px;
+    }
+    .controls2 .ctrl-btn.inactive i.icon-black {
+        background-position: center -168px;
+    }
+    .controls2 .ctrl-btn i.icon-white {
+        background-position: center -126px;
+    }
+    .controls2 .ctrl-btn.inactive i.icon-white {
+        background-position: center -168px;
+    }
+    .controls2 .ctrl-btn i.icon-less {
+        background-position: center -210px;
+    }
+    .controls2 .ctrl-btn.inactive i.icon-less {
+        background-position: center -252px;
+    }
+    .controls2 .ctrl-btn i.icon-more {
+        background-position: center -294px;
+    }
+    .controls2 .ctrl-btn.inactive i.icon-more {
+        background-position: center -336px;
+    }
+    .controls2 .ctrl-btn.icon6 i {
+        font-size: 35px;
+    }
+    .controls2 .ctrl-btn.icon8 i {
+        font-size: 30px;
+    }
+
+.rating-block
+{
+    font-weight: 300;
+    background: #e0e0e0;
+    border: 1px solid #d9d9de;
+    margin: 10px 15px;
+    padding: 18px;
+}
+    .rating-block table {
+        width: 100%;
+        line-height: 24px;
+    }
+    .rating-block table td:last-child {
+        text-align: right;
+        font-weight: 400;
+    }
+.other-puzzles
+{
+    display: none;
+    background: #e0e0e0;
+    border: 1px solid #d9d9de;
+    margin: 20px 30px 20px 20px;
+    padding: 18px;
+}
+    .other-puzzles .easy {
+        color: #6fb548;
+        margin-bottom: 10px;
+    }
+    .other-puzzles .medium {
+        color: #d0af29;
+        margin-bottom: 10px;
+    }
+    .other-puzzles .hard {
+        color: #d02929;
+        margin-bottom: 10px;
+    }
+    .other-puzzles h5,
+    .rating-block h5 {
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #d9d9de;
+    }
+    .other-puzzles > div {
+        text-align: center;
+    }
+    .other-puzzles .puzzle {
+        position: relative;
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+        .other-puzzles .puzzle img {
+            width: 100px;
+            height: 100px;
+        }
+    .other-puzzles .puzzle:last-child {
+        margin-left: 5px;
+    }
+        .other-puzzles .puzzle span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            padding-top: 29px;
+        }
+        .other-puzzles .puzzle small {
+            font-weight: normal;
+            font-size: 12px;
+            display: block;
+        }
+
+.pieces {
+    background: #e0e0e0;
+    border: 1px solid #d9d9de;
+    height: 42px;
+    line-height: 42px;
+    margin-top: 7px;
+
+    text-align: right;
+    padding-right: 12px;
+    font-size: 10px;
+}
+    .pieces
+    {
+
+    }
+
+.info {
+    margin-top: 10px;
+    background: #e0e0e0;
+    height: 32px;
+    line-height: 34px;
+    text-align: center;
+}
+    .info i {
+        font-size: 24px;
+        vertical-align: top;
+        line-height: 30px;
+    }
+
+.next-puzzle {
+    background: #e0e0e0;
+    height: 32px;
+    line-height: 34px;
+    float: left;
+    padding: 0 15px 0 10px;
+    font-size: 14px;
+}
+    .next-puzzle i {
+        font-size: 24px;
+        vertical-align: top;
+        line-height: 30px;
+    }
+    .next-puzzle.ok i {
+        color: #6fb548;
+    }
+    .next-puzzle.wrong i {
+        color: #d02929;
+    }
+#puzzles .status {
+    height: 32px;
+    line-height: 34px;
+    float: left;
+    padding: 0 15px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.level
+{
+    float: right;
+    font-size: 14px;
+    line-height: 32px;
+}
+    .level.easy {
+        color: #6fb548;
+    }
+    .level.medium {
+        color: #d0af29;
+    }
+    .level.hard {
+        color: #d02929;
+    }
+
+#board {
+    margin: 8px auto 0 auto;
+}
+    #board .board-b72b1 {
+        margin: auto;
+    }
+#board2 {
+    margin: 4px auto 0 auto;
+    clear: both;
+}
+
+.banner-row {
+    padding-top: 10px;
+    clear: both;
+}
+
+#nextmove .socials {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+}
+#puzzles .socials {
+    display: inline-block;
+    height: 30px;
+}
+.socials > * {
+    vertical-align: top;
+}
+
+#twitter-widget-0 {
+    vertical-align: top;
+}
+
+#modal-singin {
+    font-size: 12px;
+    text-align: center;
+}
+    #modal-singin .modal-dialog {
+        width: auto;
+    }
+    #modal-singin .modal-content {
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid #d9d9de;
+        background: #fff;
+    }
+    #modal-singin h4 {
+        font-size: 18px;
+        font-weight: 300;
+        margin-top: 26px;
+        margin-bottom: 15px;
+    }
+    #modal-singin .modal-header,
+    #modal-singin .modal-footer {
+        border: none;
+        text-align: center;
+    }
+    #modal-singin input[type=text] {
+        border: 1px solid #d9d9de;
+        line-height: 35px;
+        display: inline-block;
+        width: 180px;
+        border-radius: 0;
+        margin: 0;
+        padding: 0 10px;
+    }
+    #modal-singin .btn-primary {
+        border: 1px solid #38363e;
+        background: #38363e;
+        line-height: 35px;
+        color: #fff;
+        border: none;
+        display: inline-block;
+        width: 180px;
+        margin: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+    #modal-singin a.register {
+        display: inline-block;
+        line-height: 35px;
+    }
+
+@media (min-width: 320px) {
+    #modal-singin .modal-dialog {
+        width: 288px;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 18px;
+    }
+    #nextmove .description p {
+        display: none;
+    }
+    #puzzles .description {
+        display: none;
+    }
+    #nextmove .title {
+        display: none;
+    }
+    .spare-pieces-7492f
+    {
+        position: static;
+        bottom: 5px;
+        padding-left: 7px !important;
+        text-align: center;
+        background: #e0e0e0;
+        border: 1px solid #d9d9de;
+        height: 42px;
+        line-height: 42px;
+        padding-right: 12px;
+        font-size: 10px;
+    }
+    .spare-pieces-7492f img {
+        width: 30px !important;
+        height: 30px !important;
+        margin-right: 7px;
+    }
+
+    .nav {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .controls2 .ctrl-btn.icon2 {
+        margin-left: 15px;
+    }
+    .controls2{
+        margin-top: 5px;
+    }
+    .controls2 .ctrl-btn.icon4,
+    .controls2 .ctrl-btn.icon5 {
+        float: right;
+    }
+
+    .controls2 .ctrl-btn.icon6,
+    .controls2 .ctrl-btn.icon7,
+    .controls2 .ctrl-btn.icon8 {
+        display: inline-block;
+        margin: 0 6px;
+        float: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .description {
+        position: relative;
+        padding: 10px 0;
+    }
+        #nextmove .description .socials {
+            width: 95px;
+            top: 0;
+            right: 30px;
+        }
+        #puzzles  .socials {
+            width: 95px;
+            top: 65px;
+            right: 30px;
+            position: absolute;
+            text-align: left;
+        }
+        .facebook-widget {
+            margin-bottom: 6px;
+        }
+
+    .other-puzzles {
+        display: block;
+    }
+
+    #nextmove .description {
+        padding: 0 155px 0 20px;
+    }
+    .scores
+    {
+        float: none;
+        width: auto;
+        padding: 0;
+    }
+    .score1,
+    .score2 {
+        position: absolute;
+        margin: 0;
+        width: 50px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        text-align: center;
+        left: 10px;
+    }
+    .score1 {
+        top: 127px;
+    }
+    .score2 {
+        display: block;
+        top: 618px;
+    }
+    .score-progress
+    {
+        position: absolute;
+        left: 27px;
+        top: 172px;
+        width: 18px;
+        height: 425px;
+        border-radius: 8px;
+        margin: 0;
+    }
+        .progress
+        {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            min-width: 18px;
+            min-height: 18px;
+            margin-top: 0;
+            margin-left: -1px;
+        }
+            .progress:after
+            {
+                border-right: none;
+                border-bottom: 1px solid #e65757;
+                width: 34px;
+                height: 50%;
+                margin-top: 0;
+                margin-left: -9px;
+            }
+    .controls {
+        position: absolute;
+        margin: 0;
+        bottom: 10px;
+        width: auto;
+    }
+        .controls .ctrl-btn {
+            width: auto;
+            padding: 0px 32px 0 48px;
+            text-align: left;
+            background-position: 25px 12px;
+        }
+    .controls2 {
+        position: absolute;
+        right: 30px;
+        top: 120px;
+        height: auto;
+        line-height: 10px;
+        padding: 0;
+
+        border: none;
+        background: none;
+    }
+        .controls2 .ctrl-btn {
+            float: none;
+            width: 94px;
+            height: 94px;
+            border: 1px solid #d9d9de;
+            border-bottom: none;
+            margin: 0;
+            background: #e0e0e0;
+        }
+        .controls2 .ctrl-btn.icon3,
+        .controls2 .ctrl-btn:last-child {
+            border-bottom: 1px solid #d9d9de;
+        }
+        .controls2 .ctrl-btn.icon3 {
+            margin-bottom: 55px;
+        }
+        .controls2 .icon-black,
+        .controls2 .icon-white,
+        .controls2 .icon-more,
+        .controls2 .icon-less,
+        .controls2 .icon-play,
+        .controls2 .icon-stop {
+            width: auto !important;
+            float: none !important;
+            margin: 0;
+        }
+        .controls2 .ctrl-btn.margin {
+            margin-left: 0;
+        }
+        .controls2 .ctrl-btn i {
+            margin-top: 17px;
+        }
+
+    .chess-wrapper {
+        padding: 0 155px 75px 85px;
+        clear: both;
+    }
+    .chess-wrapper2 {
+        padding-right: 155px;
+        padding-left: 20px;
+        clear: both;
+    }
+    #nextmove .banner-row {
+        padding-right: 155px;
+        padding-left: 85px;
+    }
+    #puzzles .banner-row {
+        padding-right: 155px;
+        padding-left: 20px;
+    }
+    .pieces {
+        display: none;
+    }
+    .spare-pieces-7492f {
+        position: static;
+        background: #e0e0e0;
+        border: 1px solid #d9d9de;
+        padding-left: 0 !important;
+        text-align: center;
+    }
+        .spare-pieces-7492f img {
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+    .spare-pieces-top-4028b {
+        margin-bottom: 10px;
+    }
+    .spare-pieces-bottom-ae20f {
+        margin-top: 10px;
+    }
+    header .logo
+    {
+        padding-left: 20px;
+    }
+
+    .nav li {
+        display: inline-block;
+        float: none;
+        width: auto;
+    }
+    .rating-block {
+        overflow: hidden;
+        margin: 20px 155px 20px 20px;
+    }
+    .rating-block table {
+        width: 45%;
+        float: left;
+    }
+    .rating-block table:last-child {
+        width: 45%;
+        float: right;
+    }
+}
+
+@media (min-width: 1170px) {
+    #nextmove .description {
+        position: absolute;
+        right: 16px;
+        padding: 0 !important;
+        width: 510px;
+    }
+        #nextmove .description .socials {
+            position: static;
+            width: auto;
+        }
+
+    header .logo
+    {
+        padding-left: 45px;
+    }
+    header .auth-block {
+        padding-right: 40px;
+    }
+
+    .chess-wrapper {
+        padding: 0 556px 25px 114px;
+    }
+    .chess-wrapper2 {
+        padding: 0 556px 25px 114px;
+    }
+
+    .top-block {
+        width: 360px;
+        padding: 0;
+        position: absolute;
+        right: 166px;
+    }
+        .top-block .description {
+            padding: 0 0 50px 0;
+        }
+    #puzzles .socials {
+        top: 0;
+        right: 16px;
+        width: 360px;
+    }
+
+    .score1,
+    .score2 {
+        left: 25px;
+    }
+
+    .score-progress {
+        left: 42px;
+    }
+
+    .info {
+        width: 360px;
+        padding: 0;
+        position: absolute;
+        right: 166px;
+        margin: 0;
+    }
+
+    .controls2 {
+        right: 166px;
+        border: 1px solid #d9d9de;
+        background: #e0e0e0;
+        width: 360px;
+    }
+        .controls2 .ctrl-btn {
+            float: left;
+            margin: 0 !important;
+            border: none;
+            width: 119px;
+        }
+        .controls2 .ctrl-btn.icon1,
+        .controls2 .ctrl-btn.icon2,
+        .controls2 .ctrl-btn.icon4,
+        .controls2 .ctrl-btn.icon6,
+        .controls2 .ctrl-btn.icon8,
+        .controls2 .ctrl-btn.icon7{
+            border-right: 1px solid #d9d9de;
+        }
+        .controls2 .ctrl-btn.icon1,
+        .controls2 .ctrl-btn.icon2,
+        .controls2 .ctrl-btn.icon6,
+        .controls2 .ctrl-btn.icon8,
+        .controls2 .ctrl-btn.icon3 {
+            border-bottom: 1px solid #d9d9de;
+        }
+        .controls2 .ctrl-btn.icon4,
+        .controls2 .ctrl-btn.icon5 {
+            float: left;
+            margin: 0 !important;
+            width: 179px;
+            border-bottom: none;
+        }
+        .controls2 .ctrl-btn.icon8 {
+            border-bottom: none;
+        }
+    .controls {
+        right: 166px;
+        width: 360px;
+    }
+
+    #nextmove .banner-row,
+    #puzzles .banner-row {
+        position: absolute;
+        right: 16px;
+        padding: 10px 0 0 0;
+        width: 510px;
+    }
+
+    .rating-block {
+        position: absolute;
+        width: 360px;
+        right: 16px;
+        margin: 0;
+    }
+        .rating-block table {
+            width: 100% !important;
+            float: none;
+        }
+    .other-puzzles {
+        margin: 20px 16px 20px 16px;
+        padding: 24px 60px;
+        font-size: 18px;
+    }
+        .other-puzzles h5 {
+            font-size: 24px;
+        }
+    .other-puzzles .puzzle {
+        position: relative;
+        display: inline-block;
+        width: 142px;
+        height: 142px;
+    }
+    .other-puzzles .puzzle img {
+        width: 142px;
+        height: 142px;
+    }
+    .other-puzzles .puzzle:last-child {
+        margin-left: 14px;
+    }
+    .other-puzzles .puzzle span {
+        font-size: 24px;
+        padding-top: 40px;
+    }
+    .other-puzzles .puzzle small {
+        font-size: 16px;
+    }
+}
